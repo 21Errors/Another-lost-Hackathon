@@ -166,7 +166,7 @@ export default function SettingsPage() {
             </button>
           </div>
         </form>
-        <div className="elfsight-app-89cbd518-8c1b-4c9e-b505-4ccf01775cd5" data-elfsight-app-lazy></div>
+        <div className="elfsight-app-a15cd675-9dcc-4e5d-8e17-30b2d11f71d4" data-elfsight-app-lazy></div>
       </div>
     </>
   );
