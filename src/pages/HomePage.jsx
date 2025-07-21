@@ -28,7 +28,8 @@ export default function HomePage() {
 
       try {
         // Fetch documents
-        const docRes = await fetch('https://hackathon-w8qk.onrender.com/all');
+        const docRes = await fetch('https://hackathon-w8qk.onrender.com/api/documents/all');
+
         if (!docRes.ok) throw new Error(`Documents fetch failed: ${docRes.status}`);
         const docData = await docRes.json();
         setDocuments(docData.slice(0, 3));
