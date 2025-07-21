@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+// src/pages/EditDocumentPage.jsx
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { useContext } from 'react';
-import { AuthContext } from '../context/AuthContext'; // Adjust the path if needed
-
+import { AuthContext } from '../context/AuthContext';
+import styles from '../EditFormPage.module.css'; // Import shared styles
 
 function EditDocumentPage() {
   const { user } = useContext(AuthContext);
@@ -25,14 +25,24 @@ function EditDocumentPage() {
   useEffect(() => {
     const fetchDocument = async () => {
       try {
-        const res = await fetch(`https://hackathon-w8qk.onrender.com/${id}`);
-        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+        // IMPORTANT: Ensure your API endpoint is correct.
+        // The original code had `https://hackathon-w8qk.onrender.com/${id}` which seems incorrect for a document.
+        // It should likely be `http://localhost:5000/api/documents/${id}` or similar.
+        // I'm using `http://localhost:5000/api/documents/${id}` as a placeholder assuming a local API.
+        const res = await fetch(`https://hackathon-w8qk.onrender.com/api/documents/${id}`);
+        if (!res.ok) {
+          const errorData = await res.json();
+          throw new Error(errorData.error || `HTTP error! status: ${res.status}`);
+        }
         const data = await res.json();
-        if (!data || data.id !== parseInt(id)) throw new Error('Document not found.');
-        setFormData(data); // Set the single document object directly
+        // Assuming applicable_to might come as an array and needs to be a comma-separated string for input
+        if (Array.isArray(data.applicable_to)) {
+          data.applicable_to = data.applicable_to.join(', ');
+        }
+        setFormData(data);
       } catch (err) {
-        console.error(err);
-        setError(err.message);
+        console.error('Fetch error:', err);
+        setError(err.message || 'Failed to load document.');
       } finally {
         setLoading(false);
       }
@@ -46,137 +56,151 @@ function EditDocumentPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError(null); // Clear previous errors
+    setLoading(true); // Indicate saving is in progress
+
     try {
-      const res = await fetch(`https://hackathon-w8qk.onrender.com/${id}`, {
+      const dataToSend = { ...formData };
+      // Convert applicable_to back to array if it's a string
+      if (typeof dataToSend.applicable_to === 'string') {
+        dataToSend.applicable_to = dataToSend.applicable_to.split(',').map(item => item.trim()).filter(item => item !== '');
+      }
+
+      // IMPORTANT: Ensure your API endpoint is correct.
+      const res = await fetch(`https://hackathon-w8qk.onrender.com/api/documents/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: user?.username, // ✅ Add this!
+          Authorization: user?.username,
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify(dataToSend),
       });
-      if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-      alert('Document updated!');
+
+      if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(errorData.error || `HTTP error! status: ${res.status}`);
+      }
+      alert('Document updated successfully!'); // Use alert for now, consider custom modal later
       navigate('/documents');
     } catch (err) {
-      console.error(err);
-      alert(`Update failed: ${err.message}`);
+      console.error('Update failed:', err);
+      setError(`Update failed: ${err.message}`);
+      // alert(`Update failed: ${err.message}`); // Removed redundant alert
+    } finally {
+      setLoading(false);
     }
   };
-  
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p className="text-red-600">{error}</p>;
+  if (loading) return <p className={styles.loadingMessage}>Loading document...</p>;
+  if (error) return <p className={styles.errorMessage}>{error}</p>;
 
   return (
-    <div className="max-w-lg mx-auto p-4">
-    <h1 className="text-2xl font-bold mb-6">Edit Document</h1>
-    <form onSubmit={handleSubmit} className="space-y-4">
-      <label className="block">
-        Title:
-        <input
-          name="title"
-          value={formData.title || ''}
-          onChange={handleChange}
-          className="w-full border px-2 py-1"
-          required
-        />
-      </label>
-  
-      <label className="block">
-        Category:
-        <input
-          name="category"
-          value={formData.category || ''}
-          onChange={handleChange}
-          className="w-full border px-2 py-1"
-        />
-      </label>
-  
-      <label className="block">
-        Type:
-        <input
-          name="type"
-          value={formData.type || ''}
-          onChange={handleChange}
-          className="w-full border px-2 py-1"
-        />
-      </label>
-  
-      <label className="block">
-        Description:
-        <textarea
-          name="description"
-          value={formData.description || ''}
-          onChange={handleChange}
-          className="w-full border px-2 py-1"
-          rows={3}
-        />
-      </label>
-  
-      <label className="block">
-        Issuing Authority:
-        <input
-          name="issuing_authority"
-          value={formData.issuing_authority || ''}
-          onChange={handleChange}
-          className="w-full border px-2 py-1"
-        />
-      </label>
-  
-      <label className="block">
-        Keywords:
-        <input
-          name="keywords"
-          value={formData.keywords || ''}
-          onChange={handleChange}
-          className="w-full border px-2 py-1"
-        />
-      </label>
-  
-      <label className="block">
-        Applicable To:
-        <input
-          name="applicable_to"
-          value={formData.applicable_to || ''}
-          onChange={handleChange}
-          className="w-full border px-2 py-1"
-        />
-      </label>
-  
-      <label className="block">
-        External URL:
-        <input
-          name="external_url"
-          value={formData.external_url || ''}
-          onChange={handleChange}
-          className="w-full border px-2 py-1"
-          required
-        />
-      </label>
-  
-      <label className="block">
-        Source:
-        <input
-          name="source"
-          value={formData.source || ''}
-          onChange={handleChange}
-          className="w-full border px-2 py-1"
-        />
-      </label>
-  
-      <button
-        type="submit"
-        className="mt-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
-      >
-        Save Changes
-      </button>
-    </form>
-    <Link to="/documents" className="text-blue-600 underline mt-4 inline-block">
-      &larr; Back to Documents
-    </Link>
-  </div>
-  
+    <div className={styles.container}>
+      <h1 className={styles.pageTitle}>Edit Document</h1>
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <label className={styles.formGroup}>
+          Title:
+          <input
+            name="title"
+            value={formData.title || ''}
+            onChange={handleChange}
+            className={styles.input}
+            required
+          />
+        </label>
+
+        <label className={styles.formGroup}>
+          Category:
+          <input
+            name="category"
+            value={formData.category || ''}
+            onChange={handleChange}
+            className={styles.input}
+          />
+        </label>
+
+        <label className={styles.formGroup}>
+          Type:
+          <input
+            name="type"
+            value={formData.type || ''}
+            onChange={handleChange}
+            className={styles.input}
+          />
+        </label>
+
+        <label className={styles.formGroup}>
+          Description:
+          <textarea
+            name="description"
+            value={formData.description || ''}
+            onChange={handleChange}
+            className={`${styles.input} ${styles.textarea}`}
+            rows={3}
+          />
+        </label>
+
+        <label className={styles.formGroup}>
+          Issuing Authority:
+          <input
+            name="issuing_authority"
+            value={formData.issuing_authority || ''}
+            onChange={handleChange}
+            className={styles.input}
+          />
+        </label>
+
+        <label className={styles.formGroup}>
+          Keywords:
+          <input
+            name="keywords"
+            placeholder="Comma separated"
+            value={formData.keywords || ''}
+            onChange={handleChange}
+            className={styles.input}
+          />
+        </label>
+
+        <label className={styles.formGroup}>
+          Applicable To:
+          <input
+            name="applicable_to"
+            placeholder="Comma separated"
+            value={formData.applicable_to || ''}
+            onChange={handleChange}
+            className={styles.input}
+          />
+        </label>
+
+        <label className={styles.formGroup}>
+          External URL:
+          <input
+            name="external_url"
+            value={formData.external_url || ''}
+            onChange={handleChange}
+            className={styles.input}
+            required
+          />
+        </label>
+
+        <label className={styles.formGroup}>
+          Source:
+          <input
+            name="source"
+            value={formData.source || ''}
+            onChange={handleChange}
+            className={styles.input}
+          />
+        </label>
+
+        <button type="submit" className={styles.button}>
+          Save Changes
+        </button>
+      </form>
+      <Link to="/documents" className={styles.backLink}>
+        &larr; Back to Documents
+      </Link>
+    </div>
   );
 }
 

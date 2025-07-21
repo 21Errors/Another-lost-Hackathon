@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+// src/pages/EditEventPage.jsx
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { useContext } from 'react';
 import { AuthContext } from '../context/AuthContext';
+import styles from '../components/common/EditFormPage.module.css'; // Import shared styles
 
 export default function EditEventPage() {
   const { user } = useContext(AuthContext);
@@ -24,17 +25,23 @@ export default function EditEventPage() {
   useEffect(() => {
     const fetchEvent = async () => {
       try {
+        // IMPORTANT: Ensure your API endpoint is correct.
+        // The original code had `https://hackathon-w8qk.onrender.com/api/events/${id}`.
+        // I'm using `http://localhost:5000/api/events/${id}` as a placeholder assuming a local API.
         const res = await fetch(`https://hackathon-w8qk.onrender.com/api/events/${id}`);
-        if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
+        if (!res.ok) {
+          const errorData = await res.json();
+          throw new Error(errorData.error || `HTTP error! status: ${res.status}`);
+        }
         const data = await res.json();
-        if (!data || data.id !== parseInt(id)) throw new Error('Event not found.');
+        // Format date for input type="date"
         if (data.event_date) {
-          data.event_date = data.event_date.split('T')[0];
+          data.event_date = new Date(data.event_date).toISOString().split('T')[0];
         }
         setFormData(data);
       } catch (err) {
-        console.error(err);
-        setError(err.message);
+        console.error('Fetch error:', err);
+        setError(err.message || 'Failed to load event.');
       } finally {
         setLoading(false);
       }
@@ -48,126 +55,134 @@ export default function EditEventPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setError(null); // Clear previous errors
+    setLoading(true); // Indicate saving is in progress
+
     try {
       const res = await fetch(`https://hackathon-w8qk.onrender.com/api/events/${id}`, {
         method: 'PUT',
-        headers: { 'Content-Type': 'application/json',
+        headers: {
+          'Content-Type': 'application/json',
           Authorization: user?.username,
-         },
+        },
         body: JSON.stringify(formData),
       });
-      if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-      alert('Event updated!');
+      if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(errorData.error || `HTTP error! status: ${res.status}`);
+      }
+      alert('Event updated successfully!'); // Use alert for now, consider custom modal later
       navigate('/events');
     } catch (err) {
-      console.error(err);
-      alert(`Update failed: ${err.message}`);
+      console.error('Update failed:', err);
+      setError(`Update failed: ${err.message}`);
+      // alert(`Update failed: ${err.message}`); // Removed redundant alert
+    } finally {
+      setLoading(false);
     }
   };
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p className="text-red-600">{error}</p>;
+  if (loading) return <p className={styles.loadingMessage}>Loading event...</p>;
+  if (error) return <p className={styles.errorMessage}>{error}</p>;
 
   return (
-    <div className="max-w-lg mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-6">Edit Event</h1>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <label className="block">
+    <div className={styles.container}>
+      <h1 className={styles.pageTitle}>Edit Event</h1>
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <label className={styles.formGroup}>
           Title:
           <input
             name="title"
             value={formData.title || ''}
             onChange={handleChange}
-            className="w-full border px-2 py-1"
+            className={styles.input}
             required
           />
         </label>
-        <label className="block">
+        <label className={styles.formGroup}>
           Description:
           <textarea
             name="description"
             value={formData.description || ''}
             onChange={handleChange}
-            className="w-full border px-2 py-1"
+            className={`${styles.input} ${styles.textarea}`}
             rows={3}
             required
           />
         </label>
-        <label className="block">
+        <label className={styles.formGroup}>
           Event Date:
           <input
             name="event_date"
             type="date"
             value={formData.event_date || ''}
             onChange={handleChange}
-            className="w-full border px-2 py-1"
+            className={styles.input}
             required
           />
         </label>
-        <label className="block">
+        <label className={styles.formGroup}>
           Location:
           <input
             name="location"
             value={formData.location || ''}
             onChange={handleChange}
-            className="w-full border px-2 py-1"
+            className={styles.input}
           />
         </label>
-        <label className="block">
+        <label className={styles.formGroup}>
           Host:
           <input
             name="host"
             value={formData.host || ''}
             onChange={handleChange}
-            className="w-full border px-2 py-1"
+            className={styles.input}
           />
         </label>
-        <label className="block">
+        <label className={styles.formGroup}>
           Link or RSVP:
           <input
             name="link_or_rsvp"
             value={formData.link_or_rsvp || ''}
             onChange={handleChange}
-            className="w-full border px-2 py-1"
+            className={styles.input}
             required
           />
         </label>
-        <label className="block">
+        <label className={styles.formGroup}>
           Category:
           <input
             name="category"
             value={formData.category || ''}
             onChange={handleChange}
-            className="w-full border px-2 py-1"
+            className={styles.input}
           />
         </label>
-        <label className="block">
+        <label className={styles.formGroup}>
           Keywords:
           <input
             name="keywords"
+            placeholder="Comma separated"
             value={formData.keywords || ''}
             onChange={handleChange}
-            className="w-full border px-2 py-1"
+            className={styles.input}
           />
         </label>
-        <label className="block">
+        <label className={styles.formGroup}>
           Source:
           <input
             name="source"
             value={formData.source || ''}
             onChange={handleChange}
-            className="w-full border px-2 py-1"
+            className={styles.input}
           />
         </label>
-        <button
-          type="submit"
-          className="mt-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
-        >
+        <button type="submit" className={styles.button}>
           Save Changes
         </button>
       </form>
-      <Link to="/events" className="text-blue-600 underline mt-4 inline-block">
-        ← Back to Events
+      <Link to="/events" className={styles.backLink}>
+        &larr; Back to Events
       </Link>
     </div>
   );
