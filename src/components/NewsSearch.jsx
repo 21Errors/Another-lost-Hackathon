@@ -11,7 +11,7 @@ function NewsSearch({ onSearch }) {
   useEffect(() => {
     const fetchCategories = async () => {
       try {
-        const res = await axios.get('http://https://hackathon-w8qk.onrender.com/api/news/categories');
+        const res = await axios.get('https://hackathon-w8qk.onrender.com/api/news/categories');
         setCategories(res.data);
       } catch (error) {
         console.error('Failed to load categories:', error);
@@ -23,7 +23,7 @@ function NewsSearch({ onSearch }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.get('http://https://hackathon-w8qk.onrender.com/api/news/search', {
+      const response = await axios.get('https://hackathon-w8qk.onrender.com/api/news/search', {
         params: { keyword, category },
       });
       onSearch(response.data);

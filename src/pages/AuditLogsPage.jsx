@@ -24,7 +24,7 @@ export default function AuditLogsPage() {
 
     const fetchLogs = async () => {
       try {
-        const response = await fetch('http://https://hackathon-w8qk.onrender.com/api/audit/audit-logs', {
+        const response = await fetch('https://hackathon-w8qk.onrender.com/api/audit/audit-logs', {
           headers: { Authorization: user.username },
         });
         if (!response.ok) {

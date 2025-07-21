@@ -24,7 +24,7 @@ export default function EditEventPage() {
   useEffect(() => {
     const fetchEvent = async () => {
       try {
-        const res = await fetch(`http://https://hackathon-w8qk.onrender.com/api/events/${id}`);
+        const res = await fetch(`https://hackathon-w8qk.onrender.com/api/events/${id}`);
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
         const data = await res.json();
         if (!data || data.id !== parseInt(id)) throw new Error('Event not found.');
@@ -49,7 +49,7 @@ export default function EditEventPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch(`http://https://hackathon-w8qk.onrender.com/api/events/${id}`, {
+      const res = await fetch(`https://hackathon-w8qk.onrender.com/api/events/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json',
           Authorization: user?.username,

@@ -31,7 +31,7 @@ export default function SettingsPage() {
 
     const fetchPreferences = async () => {
       try {
-        const response = await fetch('http://https://hackathon-w8qk.onrender.com/api/notifications', {
+        const response = await fetch('https://hackathon-w8qk.onrender.com/api/notifications', {
           headers: { Authorization: user.username },
         });
         if (!response.ok) {
@@ -55,7 +55,7 @@ export default function SettingsPage() {
     setError(null);
     setSuccess(null);
     try {
-      const response = await fetch('http://https://hackathon-w8qk.onrender.com/api/notifications/subscribe', {
+      const response = await fetch('https://hackathon-w8qk.onrender.com/api/notifications/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Authorization: user.username },
         body: JSON.stringify({
@@ -81,7 +81,7 @@ export default function SettingsPage() {
         return; // User cancelled
     }
     try {
-      const response = await fetch('http://https://hackathon-w8qk.onrender.com/api/notifications/unsubscribe', {
+      const response = await fetch('https://hackathon-w8qk.onrender.com/api/notifications/unsubscribe', {
         method: 'POST',
         headers: { Authorization: user.username },
       });

@@ -23,7 +23,7 @@ export default function EditNewsPage() {
   useEffect(() => {
     const fetchNews = async () => {
       try {
-        const res = await fetch(`http://https://hackathon-w8qk.onrender.com/api/news/${id}`);
+        const res = await fetch(`https://hackathon-w8qk.onrender.com/api/news/${id}`);
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
         const data = await res.json();
         if (!data || data.id !== parseInt(id)) throw new Error('News article not found.');
@@ -48,7 +48,7 @@ export default function EditNewsPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch(`http://https://hackathon-w8qk.onrender.com/api/news/${id}`, {
+      const res = await fetch(`https://hackathon-w8qk.onrender.com/api/news/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json',
           Authorization: user?.username,

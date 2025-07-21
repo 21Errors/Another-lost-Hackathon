@@ -34,13 +34,13 @@ export default function HomePage() {
         setDocuments(docData.slice(0, 3));
 
         // Fetch events
-        const eventRes = await fetch('http://https://hackathon-w8qk.onrender.com/api/events/all');
+        const eventRes = await fetch('https://hackathon-w8qk.onrender.com/api/events/all');
         if (!eventRes.ok) throw new Error(`Events fetch failed: ${eventRes.status}`);
         const eventData = await eventRes.json();
         setEvents(eventData.slice(0, 3));
 
         // Fetch news
-        const newsRes = await fetch('http://https://hackathon-w8qk.onrender.com/api/news/all');
+        const newsRes = await fetch('https://hackathon-w8qk.onrender.com/api/news/all');
         if (!newsRes.ok) throw new Error(`News fetch failed: ${newsRes.status}`);
         const newsData = await newsRes.json();
         setNews(newsData.slice(0, 3));
