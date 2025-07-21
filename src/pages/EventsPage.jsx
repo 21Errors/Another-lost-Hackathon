@@ -34,9 +34,9 @@ export default function EventsPage() {
       let url;
       if (params && params.keyword && params.keyword.trim() !== '') {
         const query = new URLSearchParams(params).toString();
-        url = `http://localhost:5000/api/events/search?${query}`;
+        url = `http://https://hackathon-w8qk.onrender.com/api/events/search?${query}`;
       } else {
-        url = 'http://localhost:5000/api/events/all';
+        url = 'http://https://hackathon-w8qk.onrender.com/api/events/all';
       }
 
       const res = await fetch(url);
@@ -64,7 +64,7 @@ export default function EventsPage() {
     if (!window.confirm('Are you sure you want to delete this event?')) return;
 
     try {
-      const res = await fetch(`http://localhost:5000/api/events/${id}`, {
+      const res = await fetch(`http://https://hackathon-w8qk.onrender.com/api/events/${id}`, {
         method: 'DELETE',
         headers: { Authorization: user?.username },
       });

@@ -36,9 +36,9 @@ export default function SearchResults() {
       try {
         // Note: Your backend search endpoints use 'keyword', not 'query'
         const [docsRes, eventsRes, newsRes] = await Promise.all([
-          fetch(`http://localhost:5000/api/documents/search?keyword=${encodeURIComponent(query)}`),
-          fetch(`http://localhost:5000/api/events/search?keyword=${encodeURIComponent(query)}`),
-          fetch(`http://localhost:5000/api/news/search?keyword=${encodeURIComponent(query)}`)
+          fetch(`http://https://hackathon-w8qk.onrender.com/api/documents/search?keyword=${encodeURIComponent(query)}`),
+          fetch(`http://https://hackathon-w8qk.onrender.com/api/events/search?keyword=${encodeURIComponent(query)}`),
+          fetch(`http://https://hackathon-w8qk.onrender.com/api/news/search?keyword=${encodeURIComponent(query)}`)
         ]);
 
         if (!docsRes.ok) throw new Error('Documents search failed');

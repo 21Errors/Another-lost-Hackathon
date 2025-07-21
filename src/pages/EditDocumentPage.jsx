@@ -25,7 +25,7 @@ function EditDocumentPage() {
   useEffect(() => {
     const fetchDocument = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/documents/${id}`);
+        const res = await fetch(`http://https://hackathon-w8qk.onrender.com/api/documents/${id}`);
         if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
         const data = await res.json();
         if (!data || data.id !== parseInt(id)) throw new Error('Document not found.');
@@ -47,7 +47,7 @@ function EditDocumentPage() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch(`http://localhost:5000/api/documents/${id}`, {
+      const res = await fetch(`http://https://hackathon-w8qk.onrender.com/api/documents/${id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',

@@ -34,7 +34,7 @@ export default function AddDocumentForm({ onAdded, username }) {
         dataToSend.applicable_to = [];
       }
 
-      const res = await fetch('http://localhost:5000/api/documents', {
+      const res = await fetch('http://https://hackathon-w8qk.onrender.com/api/documents', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

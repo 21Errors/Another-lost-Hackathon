@@ -34,9 +34,9 @@ export default function NewsPage() {
       let url;
       if (params && params.keyword && params.keyword.trim() !== '') {
         const query = new URLSearchParams(params).toString();
-        url = `http://localhost:5000/api/news/search?${query}`;
+        url = `http://https://hackathon-w8qk.onrender.com/api/news/search?${query}`;
       } else {
-        url = 'http://localhost:5000/api/news/all';
+        url = 'http://https://hackathon-w8qk.onrender.com/api/news/all';
       }
 
       const res = await fetch(url);
@@ -64,7 +64,7 @@ export default function NewsPage() {
     if (!window.confirm('Are you sure you want to delete this news article?')) return;
 
     try {
-      const res = await fetch(`http://localhost:5000/api/news/${id}`, {
+      const res = await fetch(`http://https://hackathon-w8qk.onrender.com/api/news/${id}`, {
         method: 'DELETE',
         headers: { Authorization: user?.username },
       });

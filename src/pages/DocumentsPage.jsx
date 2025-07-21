@@ -33,9 +33,9 @@ function DocumentsPage() {
       let url;
       if (params && params.keyword && params.keyword.trim() !== '') {
         const query = new URLSearchParams(params).toString();
-        url = `http://localhost:5000/api/documents/search?${query}`;
+        url = `http://https://hackathon-w8qk.onrender.com/api/documents/search?${query}`;
       } else {
-        url = 'http://localhost:5000/api/documents/all';
+        url = 'http://https://hackathon-w8qk.onrender.com/api/documents/all';
       }
       const res = await fetch(url);
       if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
@@ -61,7 +61,7 @@ function DocumentsPage() {
   const handleDelete = async (id) => {
     if (!window.confirm('Are you sure you want to delete this document?')) return;
     try {
-      const res = await fetch(`http://localhost:5000/api/documents/${id}`, {
+      const res = await fetch(`http://https://hackathon-w8qk.onrender.com/api/documents/${id}`, {
         method: 'DELETE',
         headers: { Authorization: user?.username },
       });

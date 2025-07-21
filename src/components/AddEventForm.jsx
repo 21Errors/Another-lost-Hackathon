@@ -30,7 +30,7 @@ export default function AddEventForm({ onAdded, username }) {
     try {
       const dataToSend = { ...form };
 
-      const res = await fetch('http://localhost:5000/api/events', {
+      const res = await fetch('http://https://hackathon-w8qk.onrender.com/api/events', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

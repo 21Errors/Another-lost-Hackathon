@@ -28,7 +28,7 @@ export default function AddNewsForm({ onAdded, username }) {
     try {
       const dataToSend = { ...form };
 
-      const res = await fetch('http://localhost:5000/api/news', {
+      const res = await fetch('http://https://hackathon-w8qk.onrender.com/api/news', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

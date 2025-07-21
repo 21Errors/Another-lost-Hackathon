@@ -28,7 +28,7 @@ export default function AuthProvider({ children }) {
       }
 
       try {
-        const response = await fetch('http://localhost:5000/api/auth/me', {
+        const response = await fetch('http://https://hackathon-w8qk.onrender.com/api/auth/me', {
           headers: { Authorization: savedUser.username },
         });
 
@@ -52,7 +52,7 @@ export default function AuthProvider({ children }) {
   }, []);
 
   const login = async (username, password) => {
-    const response = await fetch('http://localhost:5000/api/auth/login', {
+    const response = await fetch('http://https://hackathon-w8qk.onrender.com/api/auth/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, password }),
@@ -70,7 +70,7 @@ export default function AuthProvider({ children }) {
 
   const logout = async () => {
     try {
-      await fetch('http://localhost:5000/api/auth/logout', {
+      await fetch('http://https://hackathon-w8qk.onrender.com/api/auth/logout', {
         method: 'POST',
         headers: { Authorization: user?.username },
       });
