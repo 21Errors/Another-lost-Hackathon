@@ -2,7 +2,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { AuthContext } from '../context/AuthContext';
-import styles from '../components/common/EditFormPage.module.css'; // Import shared styles
+import styles from './EditFormPage.module.css'; // Import shared styles
 
 export default function EditEventPage() {
   const { user } = useContext(AuthContext);
