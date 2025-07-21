@@ -1,0 +1,130 @@
+/* src/pages/AuditLogsPage/AuditLogsPage.module.css */
+
+.errorMessage {
+    color: #dc2626; /* text-red-600 */
+    margin-bottom: 1rem; /* mb-4 */
+    text-align: center;
+    font-size: 1rem;
+    padding: 0.75rem;
+    background-color: #fef2f2; /* Light red background */
+    border: 1px solid #ef4444;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 5px rgba(220, 38, 38, 0.1);
+  }
+  
+  .emptyMessage {
+    color: #6b7280; /* text-gray-600 */
+    text-align: center;
+    font-size: 1rem;
+    padding: 1.5rem;
+    background-color: #f1f5f9; /* Light grey background for empty state */
+    border-radius: 0.75rem;
+    margin-top: 1.5rem; /* Space from other elements */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+  }
+  
+  .table {
+    width: 100%; /* w-full */
+    border-collapse: collapse; /* For clean borders between cells */
+    border: 1px solid #e2e8f0; /* Overall table border */
+    border-radius: 0.75rem; /* Match other components' border-radius */
+    overflow: hidden; /* Ensures border-radius applies to corners with collapsed borders */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.07); /* Enhanced shadow */
+    background-color: #ffffff; /* White background for table */
+  }
+  
+  .tableHead {
+    background-color: #f1f5f9; /* Light background for header */
+  }
+  
+  .tableRowHead {
+    border-bottom: 1px solid #cbd5e1; /* border-b */
+  }
+  
+  .tableHeaderCell {
+    padding: 1rem; /* p-2 was small, increased for better readability */
+    text-align: left; /* Default text alignment for headers */
+    font-weight: 600; /* Semi-bold for headers */
+    color: #334155; /* Darker color for headers */
+    text-transform: uppercase; /* Uppercase for a more professional look */
+    font-size: 0.9rem;
+  }
+  
+  .tableBody {
+    /* No specific styles needed here, rows will handle styling */
+  }
+  
+  .tableRowBody {
+    border-bottom: 1px solid #e2e8f0; /* border-b */
+    transition: background-color 0.3s ease;
+  }
+  
+  .tableRowBody:last-child {
+    border-bottom: none; /* No border for the last row */
+  }
+  
+  .tableRowBody:hover {
+    background-color: #f8fafc; /* Light hover effect */
+  }
+  
+  .tableCell {
+    padding: 1rem; /* p-2 was small, increased for better readability */
+    color: #475569; /* Slightly darker text for content */
+    vertical-align: top; /* Align content to top for multi-line cells */
+    font-size: 0.95rem;
+  }
+  
+  /* Responsive Table Design (Stacking on small screens) */
+  @media (max-width: 768px) {
+    .tableHead {
+      display: none; /* Hide table header on small screens */
+    }
+  
+    .table, .tableBody, .tableRowBody, .tableCell {
+      display: block; /* Make table elements block for stacking */
+      width: 100%; /* Full width */
+    }
+  
+    .tableRowBody {
+      margin-bottom: 1rem;
+      border: 1px solid #e2e8f0;
+      border-radius: 0.75rem;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      background-color: #ffffff;
+    }
+  
+    .tableCell {
+      text-align: right; /* Align value to the right */
+      padding-left: 50%; /* Make space for pseudo-element label */
+      position: relative;
+      border-bottom: 1px dotted #cbd5e1; /* Subtle separator for cells */
+    }
+  
+    .tableCell:last-child {
+      border-bottom: none; /* No border for the last cell in a row */
+    }
+  
+    .tableCell::before { /* Add labels for each cell using data-label attribute */
+      content: attr(data-label);
+      position: absolute;
+      left: 0;
+      width: 50%;
+      padding-left: 1rem;
+      font-weight: 600;
+      text-align: left;
+      color: #334155;
+      text-transform: uppercase;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .tableHeaderCell,
+    .tableCell {
+      padding: 0.75rem;
+      font-size: 0.85rem;
+    }
+  
+    .tableCell::before {
+      padding-left: 0.75rem;
+    }
+  }

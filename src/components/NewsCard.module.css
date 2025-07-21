@@ -1,0 +1,174 @@
+/* src/components/NewsCard/NewsCard.module.css */
+.card {
+    background: #ffffff;
+    border-radius: 0.75rem; /* Consistent border radius */
+    padding: 1.25rem; /* Consistent padding */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Consistent shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes actions to the bottom */
+    height: 100%; /* Ensures cards in a grid have consistent height */
+    border: 1px solid rgba(226, 232, 240, 0.6); /* Subtle border */
+  }
+  
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15); /* More pronounced lift */
+  }
+  
+  .title {
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 0.6rem;
+    line-height: 1.3;
+    word-break: break-word; /* Prevents long words from overflowing */
+  }
+  
+  .info {
+    font-size: 0.95rem;
+    color: #4b5563;
+    margin-bottom: 0.25rem;
+    line-height: 1.4;
+  }
+  
+  .info strong {
+    color: #1e3a8a; /* Emphasize labels */
+    font-weight: 600;
+  }
+  
+  .infoValue {
+    font-weight: 500;
+  }
+  
+  .actions {
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap; /* Allow buttons to wrap on smaller screens */
+    gap: 0.75rem; /* Space between buttons/links */
+    justify-content: flex-end; /* Align actions to the right */
+  }
+  
+  .viewLink,
+  .editLink,
+  .deleteButton {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem; /* Space between text and icon */
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.6rem 1rem;
+    border-radius: 0.5rem; /* More rounded */
+    text-decoration: none;
+    transition: all 0.3s ease;
+    white-space: nowrap; /* Prevent wrapping of text+icon */
+  }
+  
+  /* View Link (consistent with other cards) */
+  .viewLink {
+    background: #e0e7ff;
+    color: #3b82f6;
+    border: 1px solid #93c5fd;
+  }
+  
+  .viewLink:hover {
+    background: #3b82f6;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+  }
+  
+  .viewLink svg {
+    color: #3b82f6;
+    transition: color 0.3s ease;
+  }
+  
+  .viewLink:hover svg {
+    color: #ffffff;
+  }
+  
+  /* Edit Link (consistent with other cards) */
+  .editLink {
+    background: #eff6ff;
+    color: #2563eb;
+    border: 1px solid #93c5fd;
+  }
+  
+  .editLink:hover {
+    background: #2563eb;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+  }
+  
+  .editLink svg {
+    color: #2563eb;
+    transition: color 0.3s ease;
+  }
+  
+  .editLink:hover svg {
+    color: #ffffff;
+  }
+  
+  /* Delete Button (consistent with other cards) */
+  .deleteButton {
+    background: #fef2f2;
+    color: #dc2626;
+    border: 1px solid #ef4444;
+    cursor: pointer;
+  }
+  
+  .deleteButton:hover {
+    background: #dc2626;
+    color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(220, 38, 38, 0.3);
+  }
+  
+  .deleteButton svg {
+    color: #dc2626;
+    transition: color 0.3s ease;
+  }
+  
+  .deleteButton:hover svg {
+    color: #ffffff;
+  }
+  
+  /* Responsive adjustments (consistent with other cards) */
+  @media (max-width: 768px) {
+    .card {
+      padding: 1rem;
+    }
+    .title {
+      font-size: 1.2rem;
+    }
+    .info {
+      font-size: 0.875rem;
+    }
+    .actions {
+      justify-content: center;
+    }
+    .viewLink,
+    .editLink,
+    .deleteButton {
+      font-size: 0.85rem;
+      padding: 0.5rem 0.8rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .card {
+      padding: 0.8rem;
+    }
+    .actions {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .viewLink,
+    .editLink,
+    .deleteButton {
+      width: 100%;
+      justify-content: center;
+    }
+  }

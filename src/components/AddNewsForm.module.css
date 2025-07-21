@@ -1,0 +1,132 @@
+/* src/components/AddNewsForm/AddNewsForm.module.css */
+.form {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    gap: 0.75rem; /* Consistent spacing between direct form elements */
+    padding: 1.5rem;
+    background: #ffffff;
+    border-radius: 0.75rem; /* Consistent border radius */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Consistent shadow */
+    border: 1px solid rgba(226, 232, 240, 0.6); /* Subtle border */
+    max-width: 600px; /* Constrain width of the form */
+    margin: 2rem auto; /* Center the form and add vertical margin */
+  }
+  
+  .formTitle {
+    font-size: 2rem; /* Larger font size for prominence */
+    font-weight: 700; /* Bolder text */
+    color: #1a202c; /* Darker color for strong contrast */
+    margin-bottom: 1.5rem; /* More space below the title */
+    text-align: center; /* Centered title */
+    padding-bottom: 0.75rem; /* Padding before the underline */
+    border-bottom: 2px solid #e2e8f0; /* Subtle underline */
+  }
+  
+  .errorMessage {
+    color: #dc2626; /* Red for errors */
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 0.5rem;
+    background-color: #fef2f2; /* Light red background */
+    border-radius: 0.3rem;
+    border: 1px solid #ef4444;
+  }
+  
+  .successMessage {
+    color: #16a34a; /* Green for success */
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+    text-align: center;
+    padding: 0.5rem;
+    background-color: #f0fdf4; /* Light green background */
+    border-radius: 0.3rem;
+    border: 1px solid #22c55e;
+  }
+  
+  .input {
+    border: 1px solid #e2e8f0;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.95rem;
+    color: #1e293b;
+    background: #ffffff;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    font-family: 'Inter', sans-serif;
+    width: 100%; /* Make input take full width */
+    box-sizing: border-box; /* Include padding and border in the element's total width */
+  }
+  
+  .input:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+  
+  .input::placeholder {
+    color: #6b7280;
+  }
+  
+  .textarea {
+    min-height: 80px; /* Minimum height for textarea */
+    resize: vertical; /* Allow vertical resizing only */
+  }
+  
+  .button {
+    background: #22c55e; /* Green-600 from Tailwind palette */
+    color: #ffffff;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    width: 100%; /* Make button take full width */
+    box-sizing: border-box; /* Include padding and border in the element's total width */
+  }
+  
+  .button:hover {
+    background: #16a34a; /* Darker green for hover */
+    transform: translateY(-2px);
+  }
+  
+  .button:disabled {
+    opacity: 0.6; /* Dim disabled button */
+    cursor: not-allowed;
+    transform: translateY(0); /* Prevent transform on disabled */
+    box-shadow: none; /* No shadow on disabled */
+  }
+  
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .form {
+      gap: 0.5rem;
+      padding: 1rem;
+      margin: 1.5rem auto; /* Adjust margin for smaller screens */
+    }
+  
+    .formTitle {
+      font-size: 1.3rem; /* Smaller title on small screens */
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+    }
+  
+    .input,
+    .button {
+      font-size: 0.9rem;
+      padding: 0.6rem;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .form {
+      padding: 0.75rem;
+      margin: 1rem auto;
+    }
+    .input,
+    .button {
+      padding: 0.5rem;
+    }
+  }

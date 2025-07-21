@@ -1,0 +1,133 @@
+/* src/components/EventSearch/EventSearch.module.css */
+.form {
+    display: flex;
+    gap: 1.25rem; /* Space between form elements */
+    align-items: center;
+    margin-top: 2.5rem; /* Space below page title */
+    margin-bottom: 2.5rem; /* Space above event list */
+    padding: 1.5rem;
+    background: #ffffff;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Consistent shadow */
+    border: 1px solid rgba(226, 232, 240, 0.6);
+    flex-wrap: wrap; /* Allow elements to wrap on smaller screens */
+    justify-content: center; /* Center elements when wrapped */
+  }
+  
+  .inputGroup {
+    position: relative;
+    flex-grow: 1; /* Allow input to grow */
+    min-width: 250px; /* Minimum width for the input */
+  }
+  
+  .input,
+  .select {
+    width: 100%; /* Fill available space */
+    padding: 0.85rem 1.25rem; /* Consistent padding */
+    padding-right: 2.5rem; /* Space for icon in input */
+    border: 1px solid #cbd5e1;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    color: #334155;
+    background-color: #f8fafc; /* Light background */
+    transition: all 0.3s ease;
+    outline: none;
+    -webkit-appearance: none; /* Remove default select styles */
+    -moz-appearance: none;
+    appearance: none;
+  }
+  
+  .input:focus,
+  .select:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+    background-color: #ffffff;
+  }
+  
+  .input::placeholder {
+    color: #94a3b8;
+    font-style: italic;
+  }
+  
+  .inputIcon {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #94a3b8;
+    pointer-events: none; /* Ensure clicks pass through to input */
+  }
+  
+  .select {
+    cursor: pointer;
+    /* Custom dropdown arrow (consistent with DocumentSearch) */
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%20viewBox%3D%220%200%20292.4%20292.4%22%3E%3Cpath%20fill%3D%22%2364748B%22%20d%3D%22M287%20197.4L159.4%2069.8c-2.4-2.4-5.6-3.8-9.1-3.8s-6.7%201.4-9.1%203.8L5.4%20197.4c-4.8%204.8-4.8%2012.5%200%2017.3l23.5%2023.5c4.8%204.8%2012.5%204.8%2017.3%200l105.5-105.5L246.2%20238.2c4.8%204.8%2012.5%204.8%2017.3%200l23.5-23.5c4.8-4.8%204.8-12.5%200-17.3z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 0.75rem top 50%;
+    background-size: 1rem auto;
+  }
+  
+  .button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.85rem 1.8rem;
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 1.05rem;
+    border-radius: 0.75rem;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+  
+  .button:hover {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3);
+  }
+  
+  .button svg {
+    color: #ffffff; /* Icon color */
+  }
+  
+  /* Responsive adjustments (consistent with DocumentSearch) */
+  @media (max-width: 768px) {
+    .form {
+      flex-direction: column;
+      gap: 1rem;
+      padding: 1.25rem;
+    }
+    .inputGroup,
+    .select,
+    .button {
+      width: 100%;
+    }
+    .input {
+      min-width: unset;
+    }
+    .input,
+    .select,
+    .button {
+      padding: 0.75rem 1rem;
+      font-size: 0.95rem;
+    }
+    .button {
+      justify-content: center;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .form {
+      padding: 1rem;
+    }
+    .input,
+    .select,
+    .button {
+      padding: 0.65rem 0.8rem;
+      font-size: 0.9rem;
+    }
+  }

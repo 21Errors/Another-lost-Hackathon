@@ -1,0 +1,159 @@
+/* src/pages/NewsPage/NewsPage.module.css */
+.container {
+    max-width: 1400px; /* Consistent with HomePage and DocumentsPage */
+    margin: 0 auto;
+    padding: 2rem 3rem; /* Consistent with HomePage and DocumentsPage */
+    background-color: #f8fafc;
+    font-family: 'Inter', sans-serif;
+    color: #334155;
+    min-height: calc(100vh - var(--header-height, 80px) - 2rem); /* Ensure it takes up space */
+  }
+  
+  .title {
+    font-size: 3rem; /* Larger font, consistent with other pages */
+    font-weight: 800; /* Bolder, consistent with other pages */
+    color: #1e3a8a;
+    margin-bottom: 2.5rem; /* More space below title */
+    text-align: center;
+    display: flex; /* For icon alignment */
+    align-items: center;
+    justify-content: center; /* Center content with icon */
+    gap: 1rem; /* Space between icon and text */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); /* Subtle text shadow */
+  }
+  
+  .titleIcon {
+    color: #3b82f6; /* Icon color */
+    flex-shrink: 0;
+  }
+  
+  .addButtonWrapper {
+    text-align: center; /* Center the button */
+    margin-bottom: 2rem; /* Space below the button */
+  }
+  
+  .addButton {
+    display: inline-flex; /* Use flex for icon alignment */
+    align-items: center;
+    gap: 0.75rem; /* Space between icon and text */
+    padding: 0.85rem 1.8rem; /* Slightly more padding */
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%); /* Gradient background */
+    color: #ffffff;
+    font-weight: 600; /* Bolder font weight */
+    font-size: 1.05rem; /* Slightly larger font */
+    border-radius: 0.75rem; /* More rounded corners */
+    text-decoration: none;
+    transition: all 0.3s ease; /* Smooth transition for all properties */
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2); /* Subtle shadow */
+    border: none; /* Remove default button border */
+  }
+  
+  .addButton:hover {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%); /* Darker gradient on hover */
+    transform: translateY(-3px); /* More pronounced lift */
+    box-shadow: 0 8px 25px rgba(37, 99, 235, 0.3); /* Stronger shadow on hover */
+  }
+  
+  .loadingState,
+  .errorState,
+  .emptyState {
+    text-align: center;
+    font-size: 1.2rem;
+    margin: 3rem auto; /* Center with auto margin, more vertical space */
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    display: flex; /* For icon alignment */
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    font-weight: 500;
+    max-width: 600px; /* Constrain width of message box */
+  }
+  
+  .loadingState {
+    color: #4b5563;
+    background: #f1f5f9;
+    border: 1px solid #cbd5e1;
+  }
+  
+  .loadingIcon {
+    animation: spin 1.5s linear infinite; /* Spinning animation */
+    color: #3b82f6;
+  }
+  
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+  
+  .errorState {
+    color: #dc2626;
+    background: #fef2f2;
+    border: 1px solid #ef4444;
+    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.1);
+  }
+  
+  .errorIcon {
+    color: #dc2626;
+  }
+  
+  .emptyState {
+    color: #6b7280;
+    background: #e0e7ff; /* Lighter blue background */
+    border: 1px solid #93c5fd;
+    box-shadow: 0 2px 8px rgba(147, 197, 253, 0.1);
+  }
+  
+  .emptyIcon {
+    color: #3b82f6;
+  }
+  
+  /* Responsive Design (adjusted to new container padding) */
+  @media (max-width: 768px) {
+    .container {
+      padding: 1.5rem 1.5rem; /* Consistent with DocumentsPage mobile padding */
+    }
+  
+    .title {
+      font-size: 2.25rem; /* Adjust title size */
+      gap: 0.75rem;
+    }
+  
+    .titleIcon {
+      size: 28px; /* Adjust icon size for smaller screens */
+    }
+  
+    .addButton {
+      padding: 0.7rem 1.4rem;
+      font-size: 0.95rem;
+    }
+  
+    .loadingState,
+    .errorState,
+    .emptyState {
+      font-size: 1rem;
+      padding: 1rem;
+      gap: 0.5rem;
+      max-width: 90%; /* Adjust max-width for smaller screens */
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .container {
+      padding: 1rem 1rem; /* Consistent with DocumentsPage mobile padding */
+    }
+  
+    .title {
+      font-size: 1.75rem;
+      gap: 0.5rem;
+    }
+  
+    .titleIcon {
+      size: 24px;
+    }
+  
+    .addButton {
+      padding: 0.6rem 1.2rem;
+      font-size: 0.9rem;
+    }
+  }

@@ -1,0 +1,312 @@
+/* HomePage.module.css */
+.container {
+  max-width: 1600px; /* Increased from 1200px to fill more space */
+  margin: 0 auto;
+  padding: 3rem 4rem; /* Increased horizontal padding for a more spacious feel */
+  background-color: #f8fafc;
+  font-family: 'Inter', sans-serif;
+  color: #334155;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2.5rem 0; /* Increased padding */
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+  color: #ffffff;
+  border-radius: 1rem; /* More rounded corners */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15); /* Stronger shadow */
+  position: relative;
+  overflow: hidden;
+}
+
+.header::before { /* Subtle background pattern */
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 10% 20%, rgba(255,255,255,0.1) 0%, transparent 50%),
+              radial-gradient(circle at 90% 80%, rgba(255,255,255,0.1) 0%, transparent 50%);
+  opacity: 0.5;
+  z-index: 0;
+}
+
+.title {
+  font-size: 3rem; /* Larger title */
+  font-weight: 800; /* Bolder */
+  margin: 0;
+  letter-spacing: -0.05em; /* Tighter letter spacing */
+  position: relative;
+  z-index: 1;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 1rem; /* More rounded corners */
+  padding: 2.5rem; /* Increased padding */
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Enhanced shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(226, 232, 240, 0.6); /* Subtle border */
+}
+
+.card:hover {
+  transform: translateY(-8px); /* More pronounced lift */
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15); /* Stronger hover shadow */
+}
+
+.cardTitle {
+  font-size: 2rem; /* Larger title */
+  font-weight: 700; /* Bolder */
+  color: #1e3a8a;
+  margin-bottom: 1.5rem;
+  border-bottom: 3px solid #3b82f6; /* Thicker border */
+  padding-bottom: 0.75rem; /* More padding */
+  display: flex; /* For icon alignment */
+  align-items: center; /* For icon alignment */
+  gap: 0.75rem; /* Space between icon and text */
+}
+
+.cardTitleIcon {
+  color: #3b82f6; /* Icon color */
+  flex-shrink: 0; /* Prevent icon from shrinking */
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Slightly larger min-width */
+  gap: 2rem; /* More space between cards */
+}
+
+.item {
+  background: #f1f5f9;
+  padding: 2rem; /* Increased padding */
+  border-radius: 0.75rem; /* More rounded corners */
+  transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Subtle shadow for items */
+  display: flex; /* For layout within item */
+  flex-direction: column;
+  justify-content: space-between; /* Push link to bottom */
+}
+
+.item:hover {
+  background: #e2e8f0;
+  transform: translateY(-3px); /* Slight lift on hover */
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Stronger shadow on hover */
+}
+
+.itemTitle {
+  font-size: 1.35rem; /* Slightly larger */
+  font-weight: 600; /* Bolder */
+  color: #1f2937;
+  margin-bottom: 0.75rem;
+}
+
+.itemDescription {
+  font-size: 1rem; /* Slightly larger */
+  color: #4b5563;
+  margin-bottom: 1rem; /* More space */
+  line-height: 1.6;
+  flex-grow: 1; /* Allow description to take available space */
+}
+
+.itemDate {
+  font-size: 0.9rem; /* Slightly larger */
+  color: #6b7280;
+  margin-bottom: 1rem; /* More space */
+  font-style: italic;
+}
+
+.itemLink {
+  display: inline-flex; /* Use flex for icon alignment */
+  align-items: center;
+  gap: 0.5rem; /* Space between text and icon */
+  font-size: 0.95rem; /* Slightly larger */
+  font-weight: 600; /* Bolder */
+  color: #3b82f6;
+  text-decoration: none;
+  padding: 0.75rem 1.25rem; /* More padding */
+  border-radius: 0.5rem; /* More rounded */
+  transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease;
+  border: 1px solid #3b82f6; /* Add a border */
+  margin-top: 1rem; /* Ensure space from content above */
+}
+
+.itemLink:hover {
+  background: #3b82f6;
+  color: #ffffff;
+  transform: translateX(5px); /* Slide effect on hover */
+  box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+}
+
+.itemLinkIcon {
+  transition: transform 0.2s ease;
+}
+
+.itemLink:hover .itemLinkIcon {
+  transform: translateX(3px); /* Icon moves slightly with text */
+}
+
+.viewMoreLink {
+  display: inline-flex; /* Use flex for icon alignment */
+  align-items: center;
+  gap: 0.5rem; /* Space between text and icon */
+  margin-top: 2rem; /* More margin */
+  font-size: 1.1rem; /* Larger */
+  font-weight: 600; /* Bolder */
+  color: #1e3a8a;
+  text-decoration: none;
+  border-bottom: 2px solid transparent; /* Thicker underline */
+  transition: color 0.3s ease, border-bottom 0.3s ease, transform 0.2s ease;
+  padding-bottom: 0.25rem; /* Space for underline */
+}
+
+.viewMoreLink:hover {
+  color: #3b82f6;
+  border-bottom-color: #3b82f6;
+  transform: translateX(5px); /* Slide effect on hover */
+}
+
+.viewMoreIcon {
+  transition: transform 0.2s ease;
+}
+
+.viewMoreLink:hover .viewMoreIcon {
+  transform: translateX(3px); /* Icon moves slightly with text */
+}
+
+/* State messages */
+.loadingState,
+.errorState,
+.emptyState {
+  text-align: center;
+  font-size: 1.2rem; /* Larger font size */
+  margin: 3rem 0; /* More vertical space */
+  padding: 1.5rem; /* More padding */
+  border-radius: 0.75rem; /* Rounded corners */
+  display: flex; /* For icon alignment */
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem; /* Space between icon and text */
+  font-weight: 500;
+}
+
+.loadingState {
+  color: #4b5563;
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+}
+
+.loadingIcon {
+  animation: spin 1.5s linear infinite; /* Spinning animation for loading */
+  color: #3b82f6;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.errorState {
+  color: #dc2626;
+  background: #fef2f2;
+  border: 1px solid #ef4444;
+  box-shadow: 0 2px 8px rgba(220, 38, 38, 0.1);
+}
+
+.errorIcon {
+  color: #dc2626;
+}
+
+.emptyState {
+  color: #6b7280;
+  background: #e0e7ff; /* Lighter blue background */
+  border: 1px solid #93c5fd;
+  box-shadow: 0 2px 8px rgba(147, 197, 253, 0.1);
+}
+
+.emptyIcon {
+  color: #3b82f6;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 1.5rem 1.5rem;
+  }
+
+  .header {
+    padding: 2rem 0;
+    margin-bottom: 2rem;
+  }
+
+  .title {
+    font-size: 2.25rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .cardTitle {
+    font-size: 1.5rem;
+    gap: 0.5rem;
+  }
+
+  .cardTitleIcon {
+    size: 24px; /* Adjust icon size for smaller screens */
+  }
+
+  .cardsGrid {
+    grid-template-columns: 1fr; /* Stack items on small screens */
+    gap: 1.5rem;
+  }
+
+  .item {
+    padding: 1.25rem;
+  }
+
+  .itemTitle {
+    font-size: 1.1rem;
+  }
+
+  .itemDescription,
+  .itemDate {
+    font-size: 0.9rem;
+  }
+
+  .itemLink,
+  .viewMoreLink {
+    font-size: 0.9rem;
+    padding: 0.6rem 1rem;
+  }
+
+  .loadingState,
+  .errorState,
+  .emptyState {
+    font-size: 1rem;
+    padding: 1rem;
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.75rem;
+  }
+
+  .cardTitle {
+    font-size: 1.3rem;
+  }
+
+  .itemLink,
+  .viewMoreLink {
+    display: flex; /* Ensure they remain flex for icon alignment */
+    justify-content: center; /* Center content on very small screens */
+    text-align: center;
+  }
+}

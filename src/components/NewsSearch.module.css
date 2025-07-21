@@ -1,0 +1,117 @@
+/* src/components/NewsSearch/NewsSearch.module.css */
+.form {
+    display: flex;
+    flex-direction: column; /* Stack elements vertically */
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: #ffffff;
+    border-radius: 0.75rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(226, 232, 240, 0.6);
+}
+
+.input {
+    border: 1px solid #e2e8f0;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.95rem;
+    color: #1e293b;
+    background: #ffffff;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    font-family: 'Inter', sans-serif;
+}
+
+.input:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.input::placeholder {
+    color: #6b7280;
+}
+
+.select {
+    border: 1px solid #e2e8f0;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.95rem;
+    color: #1e293b;
+    background: #ffffff;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    font-family: 'Inter', sans-serif;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%20viewBox%3D%220%200%20292.4%20292.4%22%3E%3Cpath%20fill%3D%22%2364748B%22%20d%3D%22M287%20197.4L159.4%2069.8c-2.4-2.4-5.6-3.8-9.1-3.8s-6.7%201.4-9.1%203.8L5.4%20197.4c-4.8%204.8-4.8%2012.5%200%2017.3l23.5%2023.5c4.8%204.8%2012.5%204.8%2017.3%200l105.5-105.5L246.2%20238.2c4.8%204.8%2012.5%204.8%2017.3%200l23.5-23.5c4.8-4.8%204.8-12.5%200-17.3z%22%2F%3E%3C%2Fsvg%3E');
+    background-repeat: no-repeat;
+    background-position: right 0.75rem top 50%;
+    background-size: 1rem auto;
+}
+
+.select:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* New style for the button container */
+.buttonContainer {
+  text-align: center; /* Centers inline-block elements like the button and link */
+  margin-top: 0.5rem; /* Add a little space above the button group */
+}
+
+.button {
+    background: #3b82f6;
+    color: #ffffff;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+    display: inline-block; /* Ensure it behaves like inline-block for centering */
+}
+
+.button:hover {
+    background: #2563eb;
+    transform: translateY(-2px);
+}
+
+.backLinkWrapper {
+    margin-top: 1rem;
+    /* text-align: center; /* This is now inherited from .buttonContainer or can be removed if not needed for direct centering of link within its p tag */
+}
+
+.backLink {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #3b82f6;
+    text-decoration: none;
+    display: inline-block;
+    transition: color 0.3s ease;
+}
+
+.backLink:hover {
+    color: #2563eb;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .form {
+        gap: 0.5rem;
+        padding: 1rem;
+    }
+
+    .input,
+    .select,
+    .button {
+        font-size: 0.9rem;
+        padding: 0.5rem;
+    }
+    .buttonContainer {
+        margin-top: 0.25rem; /* Adjust margin for smaller screens */
+    }
+}
