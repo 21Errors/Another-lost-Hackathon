@@ -13,8 +13,9 @@ function DocumentSearch({ onSearch }) {
     const fetchOptions = async () => {
       try {
         const [catsRes, typesRes] = await Promise.all([
-          axios.get('https://hackathon-w8qk.onrender.com/categories'),
-          axios.get('https://hackathon-w8qk.onrender.com/types'),
+          axios.get('https://hackathon-w8qk.onrender.com/api/documents/categories'),
+          axios.get('https://hackathon-w8qk.onrender.com/api/documents/types'),
+
         ]);
         setCategories(catsRes.data);
         setTypes(typesRes.data);
@@ -28,7 +29,7 @@ function DocumentSearch({ onSearch }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.get('https://hackathon-w8qk.onrender.com/search', {
+      const response = await axios.get('https://hackathon-w8qk.onrender.com/api/documents/search', {
         params: { keyword, category, type },
       });
       onSearch(response.data);
