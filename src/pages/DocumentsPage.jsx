@@ -61,7 +61,7 @@ function DocumentsPage() {
   const handleDelete = async (id) => {
     if (!window.confirm('Are you sure you want to delete this document?')) return;
     try {
-      const res = await fetch(`https://hackathon-w8qk.onrender.com/${id}`, {
+      const res = await fetch(`https://hackathon-w8qk.onrender.com/api/documents/${id}`, {
         method: 'DELETE',
         headers: { Authorization: user?.username },
       });
