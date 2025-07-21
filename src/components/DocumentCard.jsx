@@ -1,12 +1,13 @@
-// src/components/DocumentCard/DocumentCard.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
 import styles from './DocumentCard.module.css';
-
-// Import Lucide icons
 import { ExternalLink, Pencil, Trash2 } from 'lucide-react';
 
 function DocumentCard({ document, onDelete }) {
+  // Helper to ensure proper URL
+  const formatLink = (url) =>
+    url ? (url.startsWith('http') ? url : `https://${url}`) : '#';
+
   return (
     <div className={styles.card}>
       <h3 className={styles.title}>{document.title}</h3>
@@ -25,7 +26,7 @@ function DocumentCard({ document, onDelete }) {
 
       <div className={styles.actions}>
         <a
-          href={document.external_url}
+          href={formatLink(document.external_url)}
           target="_blank"
           rel="noopener noreferrer"
           className={styles.viewLink}
