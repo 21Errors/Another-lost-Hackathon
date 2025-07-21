@@ -35,7 +35,7 @@ export default function SearchResults() {
 
       try {
         const [docsRes, eventsRes, newsRes] = await Promise.all([
-          fetch(`http://https://hackathon-w8qk.onrender.com/api/documents/search?query=${encodeURIComponent(query)}`),
+          fetch(`https://hackathon-w8qk.onrender.com/search?query=${encodeURIComponent(query)}`),
           fetch(`http://https://hackathon-w8qk.onrender.com/api/events/search?query=${encodeURIComponent(query)}`),
           fetch(`http://https://hackathon-w8qk.onrender.com/api/news/search?query=${encodeURIComponent(query)}`)
         ]);
