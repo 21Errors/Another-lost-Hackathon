@@ -33,9 +33,9 @@ function DocumentsPage() {
       let url;
       if (params && params.keyword && params.keyword.trim() !== '') {
         const query = new URLSearchParams(params).toString();
-        url = `https://hackathon-w8qk.onrender.com/search?${query}`;
+        url = `https://hackathon-w8qk.onrender.com/api/documents/search?${query}`;
       } else {
-        url = 'https://hackathon-w8qk.onrender.com/all';
+        url = 'https://hackathon-w8qk.onrender.com/api/documents/all';
       }
       const res = await fetch(url);
       if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
