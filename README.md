@@ -2,6 +2,14 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+#**PICTURES OF THE FINAL PRODUCT**
+<img width="899" height="430" alt="image" src="https://github.com/user-attachments/assets/41300977-13b4-408f-8fde-03f94a2f245b" />
+<img width="899" height="428" alt="image" src="https://github.com/user-attachments/assets/f3e4ab2c-90cd-4ede-842c-3f50c455c16c" />
+
+#Performance metrics
+
+<img width="899" height="428" alt="image" src="https://github.com/user-attachments/assets/1bd6f5bd-61c2-4091-a721-22e31de29e53" />
+
 ## Available Scripts
 
 In the project directory, you can run:
@@ -69,13 +77,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
-**PICTURES OF THE FINAL PRODUCT**
-<img width="899" height="430" alt="image" src="https://github.com/user-attachments/assets/41300977-13b4-408f-8fde-03f94a2f245b" />
-<img width="899" height="428" alt="image" src="https://github.com/user-attachments/assets/f3e4ab2c-90cd-4ede-842c-3f50c455c16c" />
 
-Performance metrics
-
-<img width="899" height="428" alt="image" src="https://github.com/user-attachments/assets/1bd6f5bd-61c2-4091-a721-22e31de29e53" />
 
 
 
